@@ -1,0 +1,120 @@
+import java.util.*;
+public class Account {
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		double bal = 2000;
+		int acc,flag=0;
+		String str = name,id;
+		Account()
+		{
+			
+		}
+		Account(String n,String i)
+		{
+			name = n;
+			id = i;
+		}
+		void login()
+		{
+			System.out.println("enter customer id");
+			String s = sc.nextLine();
+			if(s.equals(id))
+			{
+				System.out.println("you logged in successfully");
+				menu();
+			}
+			else
+			{
+				flag++;
+				System.out.println("login unsuccessfully");
+				System.exit(status:0);
+			}
+		}
+		public void menu()
+		{
+			int ch;
+			do
+			{
+				System.out.println("enter your choice:n1.Transaction history\n2.Withdraw");
+				System.out.println(x:"n3.Deposite\n4.Transfer\n5.view balance \n6.Quit");
+				ch = sc.nextInt();
+				System.out.println();
+				switch(ch)
+				{
+				case 1:
+					getprevTrans();
+					break;
+				case 2:
+					System.out.println(x:"enter amount");
+					int amtW = sc.nextInt();
+					if(amtW>bal)
+					{
+						System.out.println(x:"insufficient balance");
+						break;
+					}
+					withdraw(amtW);
+					break;
+				case 3:
+					System.out.println(x:"enter amount");
+					int amtD = sc.nextInt();
+					deposit(amtD);
+					break;
+				case 4:
+					Account b1 = new Account(n:"123pay",i:"742");
+					System.out.println("Transfering money to "+b1.name);
+					System.out.println();
+					System.out.println(x:"enter amount");
+					double amtT = sc.nextDouble();
+					if(amtT>bal)
+					{
+						System.out.println(x:"insufficient balance");
+						break;
+					}
+					transfer(amtT,b1);
+					break;
+				case 5:
+					System.out.println("your current balance is"+bal);
+					break;
+				case 6:
+					System.out.println("System existing");
+					System.exit(0);
+				default:
+					System.out.println("enter a valid choice");
+					break;
+				}
+			}while(ch=6);
+		}
+		void withdraw(int amt)
+		{
+			bal = amt;
+			prevTrans=amt;
+			System.out.println("amount withdrawal successfully");
+		}
+        void deposite(int amt)
+        {
+        	bal+=amt;
+        	prevTrans=amt;
+        	System.out.println("amount deposited successfully");
+        }
+        void getprevTrans()
+        {
+        	
+        }
+        void transfer(double amt,Account b1)
+        {
+        	bal-=amt;
+        	b1.bal+=amt;
+        	System.out.println("your balance is"+bal);
+           System.out.println(b1.name"your balance is"+b1.bal);
+	}
+       class ATM{
+    	   
+       
+        public static void main(String[] args) {
+        	
+        	Account b = new Account("bank of maha","15");
+        	b.login();
+        }
+}
